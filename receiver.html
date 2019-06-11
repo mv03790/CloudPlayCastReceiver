@@ -1,0 +1,60 @@
+<html>
+<head>
+  <script type="text/javascript"
+      src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js">
+  </script>
+</head>
+<body>
+  <cast-media-player></cast-media-player>
+  <script>
+    cast.framework.CastReceiverContext.getInstance().start();
+	cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
+	
+	const context = cast.framework.CastReceiverContext.getInstance();
+	const playerManager = context.getPlayerManager();
+	
+	console.log("canDisplayType: " + context.canDisplayType('video/mp4','avc1.640029, mp4a.40.5'));
+	
+	// Listen and log all Core Events.
+	playerManager.addEventListener(cast.framework.events.category.CORE,
+	event => {
+    console.log("Core event: " + event.type);
+    console.log(event);
+	});
+	
+	playerManager.addEventListener(cast.framework.events.category.DEBUG,
+	event => {
+    console.log("Core event: " + event.type);
+    console.log(event);
+	});
+	
+	playerManager.addEventListener(cast.framework.events.category.FINE,
+	event => {
+    console.log("Core event: " + event.type);
+    console.log(event);
+	});
+	
+	playerManager.addEventListener(cast.framework.events.category.REQUEST,
+	event => {
+    console.log("Core event: " + event.type);
+    console.log(event);
+	});
+	
+	playerManager.addEventListener(cast.framework.events.EventType.ERROR, (event) => {
+    console.log("ERROR event: " + event.error);
+    console.log(event);
+	});
+	
+	playerManager.addEventListener(cast.framework.events.EventType.MEDIA_STATUS, (event) => {
+    console.log("MEDIA_STATUS event: " + event.mediaStatus);
+    console.log(event);
+	});
+	
+	// Intercept the LOAD request to be able to read in a contentId and get data.
+	playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, loadRequestData => {
+    return loadRequestData;
+	});
+	
+  </script>
+</body>
+</html>
