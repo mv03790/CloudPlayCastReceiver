@@ -16,12 +16,12 @@
 	
 	console.log("INICIOOOO");
 	console.log("canDisplayType: " + context.canDisplayType('video/mp4','avc1.640029, mp4a.40.2'));
-	console.log("playerManager: ",  JSON.parse(JSON.stringify(playerManager)));
-	console.log("playbackConfig: ",  JSON.parse(JSON.stringify(playbackConfig)));
+	/*console.log("playerManager: ",  JSON.parse(JSON.stringify(playerManager)));
+	console.log("playbackConfig: ",  JSON.parse(JSON.stringify(playbackConfig)));*/
 	
 	// Intercept the LOAD request to be able to read in a contentId and get data.
 	playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, loadRequestData => {
-	console.log("loadrequestData: ", JSON.parse(JSON.stringify(loadRequestData)));
+	console.log("loadrequestData: " + loadRequestData.media.customData);
 
     return loadRequestData;
 	});
