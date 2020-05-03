@@ -15,8 +15,8 @@
 	const playbackConfig = new cast.framework.PlaybackConfig();
 	console.log("INICIOOOO");
 	console.log("canDisplayType: " + context.canDisplayType('video/mp4','avc1.640029, mp4a.40.2'));
-	console.log("playerManager: "+ JSON.stringify(playerManager));
-	console.log("playbackConfig: " + JSON.stringify(playbackConfig));
+	console.log("playerManager: "+ playerManager);
+	console.log("playbackConfig: " + playbackConfig);
 	
 	// Listen and log all Core Events.
 	/*playerManager.addEventListener(cast.framework.events.category.CORE,
@@ -55,16 +55,19 @@
 	
 	// Intercept the LOAD request to be able to read in a contentId and get data.
 	playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, loadRequestData => {
-		console.log("loadRequestData.credentials: " + loadRequestData.credentials);
-		console.log("loadRequestData.credentialsType: " + loadRequestData.credentialsType);
-		console.log("loadRequestData.loadOptions: " + loadRequestData.loadOptions);
-		console.log("loadRequestData.media: " + loadRequestData.media);
+		alert(loadRequestData);
 
-		console.log("loadRequestData.customData: " + loadRequestData.customData);
-		console.log("loadRequestData.mediaSessionId: " + loadRequestData.mediaSessionId);
-		console.log("loadRequestData.requestId: " + loadRequestData.requestId);
     return loadRequestData;
 	});
+
+	console.log("loadRequestData.credentials: " + playerManager.loadRequestData.credentials);
+		console.log("loadRequestData.credentialsType: " + playerManager.loadRequestData.credentialsType);
+		console.log("loadRequestData.loadOptions: " + playerManager.loadRequestData.loadOptions);
+		console.log("loadRequestData.media: " + playerManager.loadRequestData.media);
+
+		console.log("loadRequestData.customData: " + playerManager.loadRequestData.customData);
+		console.log("loadRequestData.mediaSessionId: " + playerManager.loadRequestData.mediaSessionId);
+		console.log("loadRequestData.requestId: " + playerManager.loadRequestData.requestId);
 	console.log("FINNNNNN");
   </script>
 </body>
