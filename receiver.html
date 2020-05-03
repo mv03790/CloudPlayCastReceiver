@@ -13,51 +13,19 @@
 	const context = cast.framework.CastReceiverContext.getInstance();
 	const playerManager = context.getPlayerManager();
 	const playbackConfig = new cast.framework.PlaybackConfig();
+	
 	console.log("INICIOOOO");
 	console.log("canDisplayType: " + context.canDisplayType('video/mp4','avc1.640029, mp4a.40.2'));
-	console.log("playerManager: " , playerManager);
-	console.log("playbackConfig: " , playbackConfig);
-	
-	// Listen and log all Core Events.
-	/*playerManager.addEventListener(cast.framework.events.category.CORE,
-	event => {
-    console.log("Core event: " + event.type);
-    console.log(event);
-	});
-	
-	playerManager.addEventListener(cast.framework.events.category.DEBUG,
-	event => {
-    console.log("Core event: " + event.type);
-    console.log(event);
-	});
-	
-	playerManager.addEventListener(cast.framework.events.category.FINE,
-	event => {
-    console.log("Core event: " + event.type);
-    console.log(event);
-	});
-	
-	playerManager.addEventListener(cast.framework.events.category.REQUEST,
-	event => {
-    console.log("Core event: " + event.type);
-    console.log(event);
-	});
-	
-	playerManager.addEventListener(cast.framework.events.EventType.ERROR, (event) => {
-    console.log("ERROR event: " + event.error);
-    console.log(event);
-	});
-	
-	playerManager.addEventListener(cast.framework.events.EventType.MEDIA_STATUS, (event) => {
-    console.log("MEDIA_STATUS event: " + event.mediaStatus);
-    console.log(event);
-	});*/
+	console.log("playerManager: ",  JSON.parse(JSON.stringify(playerManager)));
+	console.log("playbackConfig: ",  JSON.parse(JSON.stringify(playbackConfig)));
 	
 	// Intercept the LOAD request to be able to read in a contentId and get data.
 	playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, loadRequestData => {
+	console.log("loadrequestData: ", JSON.parse(JSON.stringify(loadRequestData)));
+
     return loadRequestData;
 	});
-
+/*
 	console.log("loadRequestData.credentials: " + playerManager.loadRequestData.credentials);
 		console.log("loadRequestData.credentialsType: " + playerManager.loadRequestData.credentialsType);
 		console.log("loadRequestData.loadOptions: " + playerManager.loadRequestData.loadOptions);
@@ -65,7 +33,7 @@
 
 		console.log("loadRequestData.customData: " + playerManager.loadRequestData.customData);
 		console.log("loadRequestData.mediaSessionId: " + playerManager.loadRequestData.mediaSessionId);
-		console.log("loadRequestData.requestId: " + playerManager.loadRequestData.requestId);
+		console.log("loadRequestData.requestId: " + playerManager.loadRequestData.requestId);*/
 	console.log("FINNNNNN");
   </script>
 </body>
