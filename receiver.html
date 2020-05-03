@@ -24,9 +24,8 @@
 	playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, loadRequestData => {
 		console.log(JSON.parse(JSON.stringify(loadRequestData)));
 		console.log("loadrequestData.media.customData: " , loadRequestData.media.customData.headers);
-		loadRequestData.media.contentUrl = loadRequestData.media.contentId
-		loadRequestData.media.contentUrl.headers = {};
-		loadRequestData.media.contentUrl.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC3C8uVL6bUBLgpVBWh3_cKKC07w6zxcFQtk3IpvLkALfdBG_ppi5Q07o1SJR9eRQd_lJPLnCnOdUnDEP_BNbZVNvlOWyYNGJs7FkT8NqFsIRdzUiDCEqr65v-cgDNszQjD20W82FZ256JPnJU1I3rBhFV9xP37k';
+		loadRequestData.media.contentId.headers = {};
+		loadRequestData.media.contentId.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC3C8uVL6bUBLgpVBWh3_cKKC07w6zxcFQtk3IpvLkALfdBG_ppi5Q07o1SJR9eRQd_lJPLnCnOdUnDEP_BNbZVNvlOWyYNGJs7FkT8NqFsIRdzUiDCEqr65v-cgDNszQjD20W82FZ256JPnJU1I3rBhFV9xP37k';
 	
     return loadRequestData;
 	});
