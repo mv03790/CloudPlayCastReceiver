@@ -14,7 +14,7 @@
 	const playerManager = context.getPlayerManager();
 	const castOptions = new cast.framework.CastReceiverOptions();
 
-	let playbackConfig = (Object.assign(new cast.framework.PlaybackConfig(), playerManager.getPlaybackConfig()));
+	const playbackConfig = new cast.framework.PlaybackConfig();
 
 	console.log("INICIOOOO");
 	console.log("canDisplayType: " + context.canDisplayType('video/mp4','avc1.640029, mp4a.40.2'));
@@ -29,18 +29,18 @@
 	});
 
 	playbackConfig.manifestRequestHandler = requestInfo => {
+		requestInfo.headers = {};
 		requestInfo.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC3C8uVL6bUBLgpVBWh3_cKKC07w6zxcFQtk3IpvLkALfdBG_ppi5Q07o1SJR9eRQd_lJPLnCnOdUnDEP_BNbZVNvlOWyYNGJs7FkT8NqFsIRdzUiDCEqr65v-cgDNszQjD20W82FZ256JPnJU1I3rBhFV9xP37k';
-    	requestInfo.withCredentials = true;
 	};
 
 	playbackConfig.segmentRequestHandler = requestInfo => {
+		requestInfo.headers = {};
     	requestInfo.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC3C8uVL6bUBLgpVBWh3_cKKC07w6zxcFQtk3IpvLkALfdBG_ppi5Q07o1SJR9eRQd_lJPLnCnOdUnDEP_BNbZVNvlOWyYNGJs7FkT8NqFsIRdzUiDCEqr65v-cgDNszQjD20W82FZ256JPnJU1I3rBhFV9xP37k';
-    	requestInfo.withCredentials = true;
   	};
 
 	playbackConfig.licenseRequestHandler = requestInfo => {
+		requestInfo.headers = {};
     	requestInfo.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC3C8uVL6bUBLgpVBWh3_cKKC07w6zxcFQtk3IpvLkALfdBG_ppi5Q07o1SJR9eRQd_lJPLnCnOdUnDEP_BNbZVNvlOWyYNGJs7FkT8NqFsIRdzUiDCEqr65v-cgDNszQjD20W82FZ256JPnJU1I3rBhFV9xP37k';
-    	requestInfo.withCredentials = true;
 	};
 
 	castOptions.playbackConfig = playbackConfig;
