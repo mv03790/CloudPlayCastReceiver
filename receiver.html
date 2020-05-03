@@ -15,8 +15,8 @@
 	const playbackConfig = new cast.framework.PlaybackConfig();
 	console.log("INICIOOOO");
 	console.log("canDisplayType: " + context.canDisplayType('video/mp4','avc1.640029, mp4a.40.2'));
-	console.log("playerManager: "+ playerManager);
-	console.log("playbackConfig: " + playbackConfig);
+	console.log("playerManager: "+ JSON.stringify(playerManager));
+	console.log("playbackConfig: " + JSON.stringify(playbackConfig));
 	
 	// Listen and log all Core Events.
 	/*playerManager.addEventListener(cast.framework.events.category.CORE,
@@ -55,7 +55,6 @@
 	
 	// Intercept the LOAD request to be able to read in a contentId and get data.
 	playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, loadRequestData => {
-		alert(loadRequestData);
 		console.log("loadRequestData.credentials: " + loadRequestData.credentials);
 		console.log("loadRequestData.credentialsType: " + loadRequestData.credentialsType);
 		console.log("loadRequestData.loadOptions: " + loadRequestData.loadOptions);
