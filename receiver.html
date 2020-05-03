@@ -19,7 +19,8 @@
 	
 	// Intercept the LOAD request to be able to read in a contentId and get data.
 	playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, loadRequestData => {
-	console.log("loadrequestData: " + loadRequestData.media.customData);
+	console.log("loadrequestData.media.customData: " + loadRequestData.media.customData);
+	console.log("loadrequestData.autoplay: " + loadRequestData.autoplay);
 
     return loadRequestData;
 	});
