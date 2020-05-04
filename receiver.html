@@ -20,33 +20,19 @@
 	context.getPlayerManager().setMediaPlaybackInfoHandler((loadRequestData, playbackConfig) => {
 		console.log("setMediaPlaybackInfoHandler: Entre");
 		if(loadRequestData.media && loadRequestData.media.customData){
-			console.log("loadrequestData.media.customData: " , loadRequestData.media.customData);
+			console.log("loadRequestData: Entre");
 			console.log("loadrequestData.media.customData.headers: " , loadRequestData.media.customData.headers);
+			playbackConfig.manifestRequestHandler = requestInfo => {
+				console.log("manifestRequestHandler: Entre");
+				console.log(JSON.parse(JSON.stringify(requestInfo)));
+				requestInfo.headers = {};
+				requestInfo.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC0iph7pAtoBfP_AaIkY6uUwpeugEzSj7qo3h60VNlO03D3Ja0FuOW8QvXawlXKp9XJmMtw024ovK5Qvg5yh0SjciCtNwpe5By_qBRs-3vlF-WQh8BwwgLmHJ_Tqiac5_H_AkL0aFZ_yQbO2yfes5iBqCYtw8bMP';
+				requestInfo.withCredentials = true;
+			}
 		}
 	});
 	
-
-
-
 	console.log("FINNNNNN");
-
-/*
-	context.getPlayerManager().setMediaPlaybackInfoHandler((loadRequestData, playbackConfig) => {
-		console.log("ENTREEE a setMediaPlaybackInfoHandler");
-		if(loadRequestData.media.customData & loadRequestData.media.customData.headers){
-			console.log(JSON.parse(JSON.stringify(loadRequestData)));
-			console.log("loadrequestData.media.customData: " , loadRequestData.media.customData.headers);
-			playbackConfig.manifestRequestHandler = requestInfo => {
-				console.log("ENTREEE a manifestRequestHandler")
-				console.log(JSON.parse(JSON.stringify(requestInfo)));
-				requestInfo.headers = {};
-				requestInfo.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC3C8uVL6bUBLgpVBWh3_cKKC07w6zxcFQtk3IpvLkALfdBG_ppi5Q07o1SJR9eRQd_lJPLnCnOdUnDEP_BNbZVNvlOWyYNGJs7FkT8NqFsIRdzUiDCEqr65v-cgDNszQjD20W82FZ256JPnJU1I3rBhFV9xP37k';
-				requestInfo.withCredentials = true;
-	};
-		}*/
-
-
-	
   </script>
 </body>
 </html>
