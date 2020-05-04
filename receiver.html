@@ -19,19 +19,22 @@
 
 	
 
-	playbackConfig = context.getPlayerManager().setMediaPlaybackInfoHandler((loadRequestData, playbackConfig) => {
+	context
+	.getPlayerManager()
+	.setMediaPlaybackInfoHandler((loadRequestData, playbackConfig) => {
 		console.log("setMediaPlaybackInfoHandler: Entre");
-		if(loadRequestData.media && loadRequestData.media.customData){
+/* 		if(loadRequestData.media && loadRequestData.media.customData){
 			console.log("loadRequestData: Entre");
 			console.log("loadrequestData.media.customData.headers: " , loadRequestData.media.customData.headers);
-		}
-		playbackConfig.manifestRequestHandler = requestInfo => {
+		} */
+		playbackConfig.manifestRequestHandler = requestInfo =>	{
 				console.log("manifestRequestHandler: Entre");
 				console.log(JSON.parse(JSON.stringify(requestInfo)));
-				requestInfo.headers = {};
-				requestInfo.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC0iph7pAtoBfP_AaIkY6uUwpeugEzSj7qo3h60VNlO03D3Ja0FuOW8QvXawlXKp9XJmMtw024ovK5Qvg5yh0SjciCtNwpe5By_qBRs-3vlF-WQh8BwwgLmHJ_Tqiac5_H_AkL0aFZ_yQbO2yfes5iBqCYtw8bMP';
 				requestInfo.withCredentials = true;
+				requestInfo.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC0iph7pAtoBfP_AaIkY6uUwpeugEzSj7qo3h60VNlO03D3Ja0FuOW8QvXawlXKp9XJmMtw024ovK5Qvg5yh0SjciCtNwpe5By_qBRs-3vlF-WQh8BwwgLmHJ_Tqiac5_H_AkL0aFZ_yQbO2yfes5iBqCYtw8bMP';
+			return requestInfo;
 			}
+			
 		return playbackConfig;
 	});
 	context.start({playbackConfig: playbackConfig});
