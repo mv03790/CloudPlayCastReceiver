@@ -11,23 +11,42 @@
 	//cast.framework.CastReceiverContext.getInstance().setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
 	
 	const context = cast.framework.CastReceiverContext.getInstance();
-	const playerManager = context.getPlayerManager();
-
 	const playbackConfig = new cast.framework.PlaybackConfig();
 
 	console.log("INICIOOOO");
 	console.log("canDisplayType: " + context.canDisplayType('video/mp4','avc1.640029, mp4a.40.2'));
 	console.log(JSON.parse(JSON.stringify(playbackConfig)));
-	
-	// Intercept the LOAD request to be able to read in a contentId and get data.
-	playerManager.setMessageInterceptor(cast.framework.messages.MessageType.LOAD, loadRequestData => {
-		console.log(JSON.parse(JSON.stringify(loadRequestData)));
-		console.log("loadrequestData.media.customData: " , loadRequestData.media.customData.headers);
-		return loadRequestData;
+
+	context.getPlayerManager().setMediaPlaybackInfoHandler((loadRequestData, playbackConfig) => {
+		console.log("setMediaPlaybackInfoHandler: Entre");
+		if(loadRequestData.media && loadRequestData.media.customData){
+			console.log("loadrequestData.media.customData: " , loadRequestData.media.customData);
+			console.log("loadrequestData.media.customData.headers: " , loadRequestData.media.customData.headers);
+		}
 	});
+	
+
 
 
 	console.log("FINNNNNN");
+
+/*
+	context.getPlayerManager().setMediaPlaybackInfoHandler((loadRequestData, playbackConfig) => {
+		console.log("ENTREEE a setMediaPlaybackInfoHandler");
+		if(loadRequestData.media.customData & loadRequestData.media.customData.headers){
+			console.log(JSON.parse(JSON.stringify(loadRequestData)));
+			console.log("loadrequestData.media.customData: " , loadRequestData.media.customData.headers);
+			playbackConfig.manifestRequestHandler = requestInfo => {
+				console.log("ENTREEE a manifestRequestHandler")
+				console.log(JSON.parse(JSON.stringify(requestInfo)));
+				requestInfo.headers = {};
+				requestInfo.headers['Authorization'] = 'Bearer ya29.a0Ae4lvC3C8uVL6bUBLgpVBWh3_cKKC07w6zxcFQtk3IpvLkALfdBG_ppi5Q07o1SJR9eRQd_lJPLnCnOdUnDEP_BNbZVNvlOWyYNGJs7FkT8NqFsIRdzUiDCEqr65v-cgDNszQjD20W82FZ256JPnJU1I3rBhFV9xP37k';
+				requestInfo.withCredentials = true;
+	};
+		}*/
+
+
+	
   </script>
 </body>
 </html>
